@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom'
 
 
 class SingleSearchedResult extends Component {
   render() {
     return (
+      <div className="fullscreen">
 
-        <div className="fullscreen">
 <p>{this.props.artistName}</p>
 <p>{this.props.trackName}</p>
 <p>{this.props.collectionName}</p>
