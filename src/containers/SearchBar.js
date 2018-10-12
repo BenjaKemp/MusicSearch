@@ -15,7 +15,7 @@ class SearchBar extends Component {
           <button onClick={this.handleClick}>Length</button>
 
 
-         <button onClick={this.handleClick}>Genre</button>{" "}
+         <button onClick={this.handleClick}>Genre</button>
 
 
           <button onClick={this.handleClick}>Price</button>

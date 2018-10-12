@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
-import  SearchBar from '../containers/SearchBar'
+import React, { Component } from "react";
+import SearchBar from "../containers/SearchBar";
 
 class SearchResults extends Component {
   render() {
     return (
+      <div className="fullscreen">
+        <SearchBar />
 
-        <div className="fullscreen">
-          <SearchBar/>
-
-<h1>this is the SearchResults</h1>
-        </div>
+        <h1>this is the SearchResults</h1>
+      </div>
     );
   }
 }
