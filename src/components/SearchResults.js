@@ -1,16 +1,46 @@
 import React, { Component } from "react";
-import SearchBar from "../containers/SearchBar";
+import { connect } from "react-redux";
+import SearchBar from '../containers/SearchBar'
+import { Link } from "react-router-dom";
+import SingleSearchedResult from './SingleSearchedResult'
+
 
 class SearchResults extends Component {
+
+
+
+  renderList() {
+      return this.props.searchResult.results.map((result, index) => {
+        return (
+
+            <SingleSearchedResult
+
+              key={index}
+            {...result}
+            />
+        );
+      });
+    }
   render() {
     return (
-      <div className="fullscreen">
-        <SearchBar />
-
-        <h1>this is the SearchResults</h1>
-      </div>
+      <div >
+        <div >
+          <SearchBar/>
+          <div>{this.renderList()}</div>
+        </div>
+    </div>
     );
   }
 }
 
-export default SearchResults;
+function mapStateToProps(state) {
+  return {
+searchResult: state.searchResult
+  };
+}
+function mapDispatchToProps(dispatch) {
+  return {
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchResults);
