@@ -3,10 +3,12 @@ import { connect } from "react-redux";
 import SearchBar from "../containers/SearchBar";
 import { Link } from "react-router-dom";
 import SingleSearchedResult from "./SingleSearchedResult";
+import {sortByLength, sortByPrice, sortByGenre } from '../actions'
+import bigFilter from '../selectors/filters'
 
 class SearchResults extends Component {
   renderList() {
-    return this.props.searchResult.results.map((result, index) => {
+    return this.props.searchResult.map((result, index) => {
       return (
         <div>
           <Link
@@ -18,7 +20,8 @@ class SearchResults extends Component {
           >
             <button type="button">more detail</button>
           </Link>
-          <SingleSearchedResult key={index} {...result} />
+          <SingleSearchedResult key={result} {...result} />
+
         </div>
       );
     });
@@ -37,7 +40,8 @@ class SearchResults extends Component {
 
 function mapStateToProps(state) {
   return {
-    searchResult: state.searchResult
+    searchResult: bigFilter(state),
+      filters: state.filters
   };
 }
 function mapDispatchToProps(dispatch) {

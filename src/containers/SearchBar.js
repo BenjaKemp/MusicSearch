@@ -1,27 +1,64 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import {setSearchResults, sortBy} from '../actions'
 
 class SearchBar extends Component {
+  constructor(props) {
+  super(props);
+
+  this.state = {
+    searched: ''
+  };
+}
+onDescriptionChange = (e) => {
+  const searched = e.target.value;
+  this.setState(() => ({ searched }));
+};
+  onHandleSubmit = (e) => {
+    e.preventDefault();
+    let searchTerm = this.state.searched.replace(/ /g, '+');
+
+    fetch(`https://itunes.apple.com/search?term=${searchTerm}`)
+      .then(res => res.json())
+      .then(result => {
+        console.log(result)
+        this.props.dispatch(setSearchResults(result));
+      })
+      .catch(e => console.log(e));
+  }
+  handleClick = (e) => {
+let filterName = e.target.value;
+this.props.dispatch(sortBy(filterName))
+
+
+  }
+
   render() {
     return (
       <div className="fullscreen">
-        <form>
+        <form onSubmit={this.onHandleSubmit}>
           <label>
             Name:
-            <input type="text" name="name" />
+            <input
+              value={this.state.searched}
+              onChange={this.onDescriptionChange}
+            />
           </label>
           <input type="submit" value="Submit" />
         </form>
 
-          <button onClick={this.handleClick}>Length</button>
+        <button value="length" onClick={this.handleClick}>Length</button>
 
+        <button  value="genre" onClick={this.handleClick}>Genre</button>
 
-         <button onClick={this.handleClick}>Genre</button>
-
-
-          <button onClick={this.handleClick}>Price</button>
+        <button value="price" onClick={this.handleClick}>Price</button>
       </div>
     );
   }
 }
 
-export default SearchBar;
+function mapDispatchToProps(dispatch) {
+  return {};
+}
+
+export default connect(mapDispatchToProps)(SearchBar);

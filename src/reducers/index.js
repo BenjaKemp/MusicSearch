@@ -1,11 +1,13 @@
 
 import { combineReducers } from "redux";
 import searchResult from './reducer_APIcall'
+import filters from './reducer_filter'
 
 
 const rootReducer = combineReducers({
 
-  searchResult: searchResult
+  searchResult: searchResult,
+  filters: filters
 
 });
 
