@@ -1,11 +1,21 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
+import { connect } from "react-redux";
 
 
 class SingleSearchedResult extends Component {
   render() {
     return (
       <div className="fullscreen">
+                <Link
+            to={{
+              pathname: `/detail/${this.props.trackId}`,
+              state: this.props
+            }}
+
+          >
+            <button type="button">more detail</button>
+          </Link>
 
 <p>{this.props.artistName}</p>
 <p>{this.props.trackName}</p>

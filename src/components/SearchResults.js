@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import SearchBar from "../containers/SearchBar";
-import { Link } from "react-router-dom";
+
 import SingleSearchedResult from "./SingleSearchedResult";
 import {sortByLength, sortByPrice, sortByGenre } from '../actions'
 import bigFilter from '../selectors/filters'
@@ -11,17 +11,7 @@ class SearchResults extends Component {
     return this.props.searchResult.map((result, index) => {
       return (
         <div>
-          <Link
-            to={{
-              pathname: `/detail/${result.trackId}`,
-              state: { index, result }
-            }}
-            key={index}
-          >
-            <button type="button">more detail</button>
-          </Link>
-          <SingleSearchedResult key={result} {...result} />
-
+          <SingleSearchedResult key={result.trackId} {...result}/>
         </div>
       );
     });
@@ -39,6 +29,7 @@ class SearchResults extends Component {
 }
 
 function mapStateToProps(state) {
+  console.log(state)
   return {
     searchResult: bigFilter(state),
       filters: state.filters
