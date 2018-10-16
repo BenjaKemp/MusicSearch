@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { FacebookShareButton, FacebookIcon } from "react-share";
 import { connect } from "react-redux";
 import {Link} from 'react-router-dom'
-
 import "./Detail.css";
 import ResponsivePlayer from "./ResponsivePlayer";
 import bigFilter from '../selectors/filters'
+import { withRouter } from "react-router";
 class Detail extends Component {
 
   constructor(props){
@@ -13,14 +13,12 @@ class Detail extends Component {
   }
 
   render() {
-    console.log('this.props', this.props)
-    const songDetail = this.props.location.state;
-const trackdetails = this.props.searchResult.map(el => {
-  return el.trackId
-})
-const thisTrackIndex = trackdetails.indexOf(songDetail.trackId)
-console.log('thisTrackIndex', thisTrackIndex)
-console.log(trackdetails, 'trackdetails')
+    const index = Number(this.props.match.params.id)
+    const trackdetails = this.props.searchResult.map(el => {
+      return el.trackId
+    })
+    const thisTrackIndex = trackdetails.indexOf(index)
+    const songDetail = this.props.searchResult[thisTrackIndex];
     return (
       <div className="player" id="ap">
         <div className="player_body">
@@ -42,8 +40,8 @@ console.log(trackdetails, 'trackdetails')
                round={false} />
            </FacebookShareButton>
 
-           <button onClick={(e)=>{}} disabled={thisTrackIndex===0}>skip to prev track</button>
-           <button onClick={this.skip} disabled={thisTrackIndex===trackdetails.length-1}>skip to next track</button>
+           <button onClick={()=>{this.props.history.push(`/detail/${trackdetails[thisTrackIndex-1]}`) }} disabled={thisTrackIndex===0}>skip to prev track</button>
+           <button onClick={()=>{this.props.history.push(`/detail/${trackdetails[thisTrackIndex+1]}`) }} disabled={thisTrackIndex===trackdetails.length-1}>skip to next track</button>
 
         </div>
       </div>
@@ -51,10 +49,9 @@ console.log(trackdetails, 'trackdetails')
   }
 }
 function mapStateToProps(state) {
-  console.log(state)
   return {
     searchResult: bigFilter(state),
   };
 }
 
-export default connect(mapStateToProps)(Detail);
+export default withRouter(connect(mapStateToProps)(Detail));

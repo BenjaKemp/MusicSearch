@@ -7,16 +7,7 @@ class SingleSearchedResult extends Component {
   render() {
     return (
       <div className="fullscreen">
-                <Link
-            to={{
-              pathname: `/detail/${this.props.trackId}`,
-              state: this.props
-            }}
-
-          >
-            <button type="button">more detail</button>
-          </Link>
-
+<Link to={`/detail/${this.props.trackId}`}>More detail</Link> 
 <p>{this.props.artistName}</p>
 <p>{this.props.trackName}</p>
 <p>{this.props.collectionName}</p>
