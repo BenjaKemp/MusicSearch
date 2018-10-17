@@ -10,36 +10,30 @@ class SearchResults extends Component {
   renderList() {
     return this.props.searchResult.map((result, index) => {
       return (
-        <div>
           <SingleSearchedResult key={result.trackId} {...result}/>
-        </div>
       );
     });
   }
   render() {
     return (
-      <div>
-        <div>
+      <div className="entire-container">
+
           <SearchBar />
-          <div>{this.renderList()}</div>
+          <div className="container">{this.renderList()}</div>
         </div>
-      </div>
+
     );
   }
 }
 
 function mapStateToProps(state) {
-  console.log(state)
   return {
     searchResult: bigFilter(state),
       filters: state.filters
   };
 }
-function mapDispatchToProps(dispatch) {
-  return {};
-}
+
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(SearchResults);

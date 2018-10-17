@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Router, Switch } from 'react-router'
-import { BrowserRouter, Route } from 'react-router-dom'
+import { Router } from 'react-router'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import logo from './logo.svg';
 import './App.css';
+import './styles/styles.scss'
 import  Detail from './components/Detail'
 import  SearchResults from './components/SearchResults'
 class App extends Component {
