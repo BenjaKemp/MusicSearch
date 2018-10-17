@@ -13,6 +13,7 @@ class Detail extends Component {
   }
 
   render() {
+    console.log('this.props------------>', this.props)
     const index = Number(this.props.match.params.id)
     const trackdetails = this.props.searchResult.map(el => {
       return el.trackId
@@ -23,7 +24,6 @@ class Detail extends Component {
       <div className="player" id="ap">
         <div className="player_body">
           <img src={songDetail.artworkUrl100} className="image" />
-          <ResponsivePlayer url={songDetail.previewUrl} />
           <p>
             the song is {songDetail.trackName} by the artist{" "}
             {songDetail.artistName}
@@ -42,7 +42,8 @@ class Detail extends Component {
 
            <button onClick={()=>{this.props.history.push(`/detail/${trackdetails[thisTrackIndex-1]}`) }} disabled={thisTrackIndex===0}>skip to prev track</button>
            <button onClick={()=>{this.props.history.push(`/detail/${trackdetails[thisTrackIndex+1]}`) }} disabled={thisTrackIndex===trackdetails.length-1}>skip to next track</button>
-
+          <Link to={`/`}><button>back to search</button></Link>
+          <ResponsivePlayer url={songDetail.previewUrl} />
         </div>
       </div>
     );

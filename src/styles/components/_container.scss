@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  height: 600px;
+  flex-direction: column;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 3.2rem;
+  overflow: scroll;
+}
+
+.search-container {
+  width: 864px;
+  height: 84px;
+  margin: 0.2rem;
+  border: #20222b;
+  padding: -3.8rem;
+  border: black 2px solid;
+  background-color: #a5afd7;
+}

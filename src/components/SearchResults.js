@@ -10,9 +10,7 @@ class SearchResults extends Component {
   renderList() {
     return this.props.searchResult.map((result, index) => {
       return (
-        <div>
           <SingleSearchedResult key={result.trackId} {...result}/>
-        </div>
       );
     });
   }
@@ -21,7 +19,7 @@ class SearchResults extends Component {
       <div>
         <div>
           <SearchBar />
-          <div>{this.renderList()}</div>
+          <div className="container">{this.renderList()}</div>
         </div>
       </div>
     );
