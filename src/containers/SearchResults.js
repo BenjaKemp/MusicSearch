@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import SearchBar from "../containers/SearchBar";
+import SearchBar from "./SearchBar";
 
-import SingleSearchedResult from "./SingleSearchedResult";
+import SingleSearchedResult from "../components/SingleSearchedResult";
 import {sortByLength, sortByPrice, sortByGenre } from '../actions'
 import bigFilter from '../selectors/filters'
 

@@ -9,7 +9,7 @@ import {
 } from "react-share";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import ResponsivePlayer from "./ResponsivePlayer";
+import ResponsivePlayer from "../components/ResponsivePlayer";
 import bigFilter from "../selectors/filters";
 class Detail extends Component {
   constructor(props) {

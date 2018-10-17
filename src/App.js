@@ -4,8 +4,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import logo from './logo.svg';
 import './App.css';
 import './styles/styles.scss'
-import  Detail from './components/Detail'
-import  SearchResults from './components/SearchResults'
+import  Detail from './containers/Detail'
+import  SearchResults from './containers/SearchResults'
 class App extends Component {
   render() {
     return (
