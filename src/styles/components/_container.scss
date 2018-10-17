@@ -10,13 +10,17 @@
 
 .search-container {
   display: flex;
-  flex-direction: row;
-  width: 864px;
-  height: 110px;
+  flex-direction: column;
+  width: 1100px;
+  height: 136px;
   border: #20222b;
   padding: 5px;
   border: black 2px solid;
   background-color: #a5afd7;
+}
+.search-button-containers {
+
+  
 }
 
 .entire-container {

@@ -60,25 +60,22 @@ class Detail extends Component {
               <button>back to search</button>
             </Link>
           </div>
-          <div className="media-icons">
+          <div className="one-line-flex">
             <FacebookShareButton
               url={shareUrl}
               quote="Bens app is the best"
-              className="button"
             >
               <FacebookIcon size={32} round={false} />
             </FacebookShareButton>
             <GooglePlusShareButton
               url={shareUrl}
               quote="Bens app is the best"
-              className="button"
             >
               <GooglePlusIcon size={32} round={false} />
             </GooglePlusShareButton>
             <TwitterShareButton
               url={shareUrl}
               quote="Bens app is the best"
-              className="button"
             >
               <TwitterIcon size={32} round={false} />
             </TwitterShareButton>

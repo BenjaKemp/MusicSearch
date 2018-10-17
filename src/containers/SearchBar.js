@@ -44,13 +44,15 @@ this.props.dispatch(sortBy(filterName))
               onChange={this.onDescriptionChange}
               placeholder="Please enter Artist, Song or Album to start......"
             />
-          <button type="submit" className="button">Search!</button>
+          <button type="submit" className="search">Search!</button>
         </form>
       </div>
-        <button value="length" onClick={this.handleClick} className="button">Length</button>
-        <button  value="genre" onClick={this.handleClick} className="button">Genre</button>
-        <button value="price" onClick={this.handleClick} className="button">Price</button>
+      <div className="one-line-flex">
+        <button value="length" onClick={this.handleClick} className="select-me ">Length</button>
+        <button  value="genre" onClick={this.handleClick} className="select-me ">Genre</button>
+        <button value="price" onClick={this.handleClick} className="select-me ">Price</button>
       </div>
+    </div>
     );
   }
 }
