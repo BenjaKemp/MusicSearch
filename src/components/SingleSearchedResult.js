@@ -23,25 +23,25 @@ class SingleSearchedResult extends Component {
   };
   render() {
     return (
-      <div class="albums">
-        <div class="album">
-          <img class="album__artwork" src={this.props.artworkUrl100} />
-          <div class="album__details">
+      <div className="albums">
+        <Link to={`/detail/${this.props.trackId}`} style={{ textDecoration: 'none'}}>
+        <div className="album">
+          <img className="album__artwork" src={this.props.artworkUrl100} />
+          <div className="album__details">
             <h2>{this.props.collectionName}</h2>
-            <p class="album__artist">{this.props.artistName}</p>
-            <p class="album__desc">Track Title: {this.props.trackName}</p>
-             <Link to={`/detail/${this.props.trackId}`}><button>Play</button>
-             </Link>
+            <p className="album__artist">{this.props.artistName}</p>
+            <p className="album__desc">Track Title: {this.props.trackName}</p>
 
-            <p class="album__desc">
+            <p className="album__desc">
               Release Date: {this.timerConverter(this.props.releaseDate)}
             </p>
-            <p class="album__desc">
+            <p className="album__desc">
               Price: {this.priceConverter(this.props.trackPrice)} Time:{" "}
               {this.millisToMinutesAndSeconds(this.props.trackTimeMillis)}
             </p>
           </div>
         </div>
+      </Link>
       </div>
     );
   }

@@ -16,28 +16,24 @@ class SearchResults extends Component {
   }
   render() {
     return (
-      <div>
-        <div>
+      <div className="entire-container">
+
           <SearchBar />
           <div className="container">{this.renderList()}</div>
         </div>
-      </div>
+
     );
   }
 }
 
 function mapStateToProps(state) {
-  console.log(state)
   return {
     searchResult: bigFilter(state),
       filters: state.filters
   };
 }
-function mapDispatchToProps(dispatch) {
-  return {};
-}
+
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(SearchResults);

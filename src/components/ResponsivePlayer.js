@@ -1,7 +1,6 @@
 
 import React, { Component } from "react";
 import ReactPlayer from 'react-player'
-import './ResponsivePlayer.css'
 
 
 class ResponsivePlayer extends Component {
