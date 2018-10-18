@@ -1,4 +1,4 @@
-// Get visible expenses
+
 
 export default (searches) => {
   return searches.searchResult.results.sort((a, b) => {

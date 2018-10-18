@@ -10,13 +10,12 @@
 
 .search-container {
   display: flex;
-  flex-direction: row;
-  width: 864px;
-  height: 110px;
-  border: #20222b;
-  padding: 5px;
-  border: black 2px solid;
-  background-color: #a5afd7;
+      flex-direction: column;
+      width: 864px;
+      height: 110px;
+      border: #20222b;
+      padding: 5px;
+      background-color: #a5afd7;
 }
 
 .entire-container {

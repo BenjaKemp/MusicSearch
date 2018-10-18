@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import SearchBar from "../containers/SearchBar";
+import SearchBar from "./SearchBar";
 
-import SingleSearchedResult from "./SingleSearchedResult";
-import {sortByLength, sortByPrice, sortByGenre } from '../actions'
-import bigFilter from '../selectors/filters'
+import SingleSearchedResult from "../components/SingleSearchedResult";
+import bigFilter from '../helpers/filters'
 
 class SearchResults extends Component {
   renderList() {
@@ -15,9 +14,9 @@ class SearchResults extends Component {
     });
   }
   render() {
+
     return (
       <div className="entire-container">
-
           <SearchBar />
           <div className="container">{this.renderList()}</div>
         </div>

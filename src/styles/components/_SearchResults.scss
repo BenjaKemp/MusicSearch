@@ -1,20 +1,18 @@
-:root {
-  --yellow: #ffc600;
-  --black: #272727;
-}
-
 *, *:before, *:after {
   box-sizing: inherit;
 }
+
 body {
   background-image: linear-gradient(110deg, #f93d66, #6d47d9);
   min-height: calc(100vh - 100px);
   margin: 50px;
   letter-spacing: -1px;
 }
+
 h1, h2, h3, h4, h5, h6 {
   margin: 0 0 5px 0;
 }
+
 .albums {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -36,8 +34,5 @@ h1, h2, h3, h4, h5, h6 {
       font-weight: 100;
     }
     .album__artwork {
-      width: 100%;
+          width: 87%
     }
-p {
-  margin: 0 0 20px 0;
-}
