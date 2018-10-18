@@ -11,13 +11,12 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import ResponsivePlayer from "../components/ResponsivePlayer";
 import bigFilter from "../helpers/filters";
+import skip from'../assets/skip.png';
+import returnToSearch from'../assets/returnToSearch.png';
+
 class Detail extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
-    console.log("this.props", this.props);
     const index = Number(this.props.match.params.id);
     const trackdetails = this.props.searchResult.map(el => {
       return el.trackId;
@@ -34,7 +33,6 @@ class Detail extends Component {
             {songDetail.artistName}
           </p>
           <div className="controls">
-            <ResponsivePlayer url={songDetail.previewUrl} index={index} />
 
             <button
               onClick={() => {
@@ -43,9 +41,11 @@ class Detail extends Component {
                 );
               }}
               disabled={thisTrackIndex === 0}
-            >
-              skip to prev track
+              >
+              <img src={skip} style={{width: "20px", height: "20px", transform: "rotate(180deg)"}}/>
+
             </button>
+              <ResponsivePlayer url={songDetail.previewUrl} index={index} />
             <button
               onClick={() => {
                 this.props.history.push(
@@ -54,13 +54,15 @@ class Detail extends Component {
               }}
               disabled={thisTrackIndex === trackdetails.length - 1}
             >
-              skip to next track
+            <img src={skip} style={{width: "20px", height: "20px"}}/>
             </button>
             <Link to={`/`}>
-              <button>back to search</button>
+
+              <img src={returnToSearch} style={{width: "20px", height: "20px"}}/>
+
             </Link>
           </div>
-          <div className="media-icons">
+            <div className="one-line-flex">
             <FacebookShareButton
               url={shareUrl}
               quote="Bens app is the best"

@@ -8,19 +8,14 @@
 .player_body {
   display: flex;
   align-items: center;
+  flex-direction: column;
   border-radius: 5%;
-  position: relative;
-  z-index: 10;
-  right: 0;
-  bottom: 0;
-  left: 0;
   overflow: hidden;
   width: 400px;
   height: 590px;
   margin: auto;
   background: rgba(255, 255, 255, 1);
   box-shadow: 0 5px 10px 2px rgba(0, 0, 0, .15), 0 15px 35px 0 rgba(0, 105, 92, .5);
-  flex-direction: column;
 }
 
 .image {
@@ -37,4 +32,9 @@
   height:20px;
   width:auto;
   overflow: auto;
+}
+
+.navigation-buttons{
+
+
 }
