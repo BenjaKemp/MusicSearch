@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import SearchBar from "./SearchBar";
 
 import SingleSearchedResult from "../components/SingleSearchedResult";
-import {sortByLength, sortByPrice, sortByGenre } from '../actions'
 import bigFilter from '../helpers/filters'
 
 class SearchResults extends Component {
@@ -15,7 +14,6 @@ class SearchResults extends Component {
     });
   }
   render() {
-    console.log('this.props', this.props)
 
     return (
       <div className="entire-container">

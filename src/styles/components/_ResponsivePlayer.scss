@@ -1,3 +1,14 @@
+.player {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  padding: 18px 0;
+}
+
+.controls {
+  width: 100%;
+}
+
 .player-wrapper {
   position: relative;
   padding-top: 56.25% /* Player ratio: 100 / (1280 / 720) */

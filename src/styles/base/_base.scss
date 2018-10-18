@@ -21,3 +21,14 @@
 // .button:disabled {
 //   cursor: default;
 // }
+p {
+  padding: 2px;
+  margin: 0;
+}
+
+//helpers
+.one-line-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

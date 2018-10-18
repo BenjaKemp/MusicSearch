@@ -1,3 +1,3 @@
 export default (price) => {
-  return `£${price}`;
+  return `$${price}`;
 };

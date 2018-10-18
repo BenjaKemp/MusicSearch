@@ -11,11 +11,9 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import ResponsivePlayer from "../components/ResponsivePlayer";
 import bigFilter from "../helpers/filters";
-import skip from'../assets/skip.png';
-import returnToSearch from'../assets/returnToSearch.png';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class Detail extends Component {
-
   render() {
     const index = Number(this.props.match.params.id);
     const trackdetails = this.props.searchResult.map(el => {
@@ -26,64 +24,71 @@ class Detail extends Component {
     const shareUrl = this.props.location.pathname;
     return (
       <div className="player" id="ap">
-        <div className="player_body">
-          <img src={songDetail.artworkUrl100} className="image" />
-          <p className="track-info">
-            the song is {songDetail.trackName} by the artist{" "}
-            {songDetail.artistName}
-          </p>
-          <div className="controls">
+        <div className="player-body">
 
-            <button
-              onClick={() => {
-                this.props.history.push(
-                  `/detail/${trackdetails[thisTrackIndex - 1]}`
-                );
-              }}
-              disabled={thisTrackIndex === 0}
-              >
-              <img src={skip} style={{width: "20px", height: "20px", transform: "rotate(180deg)"}}/>
-
-            </button>
-              <ResponsivePlayer url={songDetail.previewUrl} index={index} />
-            <button
-              onClick={() => {
-                this.props.history.push(
-                  `/detail/${trackdetails[thisTrackIndex + 1]}`
-                );
-              }}
-              disabled={thisTrackIndex === trackdetails.length - 1}
-            >
-            <img src={skip} style={{width: "20px", height: "20px"}}/>
-            </button>
+          <div className="go-back">
             <Link to={`/`}>
-
-              <img src={returnToSearch} style={{width: "20px", height: "20px"}}/>
-
+              <FontAwesomeIcon icon="undo" />
             </Link>
           </div>
-            <div className="one-line-flex">
-            <FacebookShareButton
-              url={shareUrl}
-              quote="Bens app is the best"
-              className="button"
-            >
-              <FacebookIcon size={32} round={false} />
-            </FacebookShareButton>
-            <GooglePlusShareButton
-              url={shareUrl}
-              quote="Bens app is the best"
-              className="button"
-            >
-              <GooglePlusIcon size={32} round={false} />
-            </GooglePlusShareButton>
-            <TwitterShareButton
-              url={shareUrl}
-              quote="Bens app is the best"
-              className="button"
-            >
-              <TwitterIcon size={32} round={false} />
-            </TwitterShareButton>
+
+          <div className="player-content">
+
+            <div className="detail-top-nav">
+              <button className="fa-btn"
+                onClick={() => {
+                  this.props.history.push(
+                    `/detail/${trackdetails[thisTrackIndex - 1]}`
+                  );
+                }}
+                disabled={thisTrackIndex === 0}
+              >
+                <FontAwesomeIcon className="big" icon="step-backward" />
+              </button>
+              <img src={songDetail.artworkUrl100} className="image" alt=""/>
+              <button className="fa-btn"
+                onClick={() => {
+                  this.props.history.push(
+                    `/detail/${trackdetails[thisTrackIndex + 1]}`
+                  );
+                }}
+                disabled={thisTrackIndex === trackdetails.length - 1}
+              >
+                <FontAwesomeIcon className="big" icon="step-forward" />
+              </button>
+            </div>
+
+            <p className="track-info">
+              The song is {songDetail.trackName} by the artist{" "}
+              {songDetail.artistName}
+            </p>
+            <div className="controls">
+              <ResponsivePlayer url={songDetail.previewUrl} index={index} />
+            </div>
+            <div className="social-media-div">
+              <FacebookShareButton
+                url={shareUrl}
+                quote="Bens app is the best"
+                className="button"
+              >
+                <FacebookIcon size={32} round={false} />
+              </FacebookShareButton>
+              <GooglePlusShareButton
+                url={shareUrl}
+                quote="Bens app is the best"
+                className="button"
+              >
+                <GooglePlusIcon size={32} round={false} />
+              </GooglePlusShareButton>
+              <TwitterShareButton
+                url={shareUrl}
+                quote="Bens app is the best"
+                className="button"
+              >
+                <TwitterIcon size={32} round={false} />
+              </TwitterShareButton>
+            </div>
+
           </div>
         </div>
       </div>
