@@ -4,7 +4,7 @@ import SearchBar from "./SearchBar";
 
 import SingleSearchedResult from "../components/SingleSearchedResult";
 import {sortByLength, sortByPrice, sortByGenre } from '../actions'
-import bigFilter from '../selectors/filters'
+import bigFilter from '../helpers/filters'
 
 class SearchResults extends Component {
   renderList() {
@@ -15,9 +15,10 @@ class SearchResults extends Component {
     });
   }
   render() {
+    console.log('this.props', this.props)
+
     return (
       <div className="entire-container">
-
           <SearchBar />
           <div className="container">{this.renderList()}</div>
         </div>

@@ -1,27 +1,16 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import moment from "moment";
+
+import millisToMinutesAndSeconds from '../helpers/timeEditor'
+import releaseDateConverter from '../helpers/releaseDateConverter'
+import priceConverter from '../helpers/priceConverter'
 
 class SingleSearchedResult extends Component {
-  millisToMinutesAndSeconds = millis => {
-    const minutes = Math.floor(millis / 60000);
-    const seconds = ((millis % 60000) / 1000).toFixed(0);
-    return seconds == 60
-      ? minutes + 1 + ":00"
-      : minutes + " mins " + (seconds < 10 ? "0" : "") + seconds;
-  };
 
-  timerConverter = time => {
-    let newString = moment(time)
-      ._d.toString()
-      .substring(0, 15);
-    return newString;
-  };
-  priceConverter = price => {
-    return `£${price}`;
-  };
+
   render() {
+    console.log('this.props', this.props)
     return (
       <div className="albums">
         <Link to={`/detail/${this.props.trackId}`} style={{ textDecoration: 'none'}}>
@@ -33,11 +22,11 @@ class SingleSearchedResult extends Component {
             <p className="album__desc">Track Title: {this.props.trackName}</p>
 
             <p className="album__desc">
-              Release Date: {this.timerConverter(this.props.releaseDate)}
+              Release Date: {releaseDateConverter(this.props.releaseDate)}
             </p>
             <p className="album__desc">
-              Price: {this.priceConverter(this.props.trackPrice)} Time:{" "}
-              {this.millisToMinutesAndSeconds(this.props.trackTimeMillis)}
+              Price: {priceConverter(this.props.trackPrice)} Time:{" "}
+              {millisToMinutesAndSeconds(this.props.trackTimeMillis)}
             </p>
           </div>
         </div>

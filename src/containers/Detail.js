@@ -10,7 +10,7 @@ import {
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import ResponsivePlayer from "../components/ResponsivePlayer";
-import bigFilter from "../selectors/filters";
+import bigFilter from "../helpers/filters";
 class Detail extends Component {
   constructor(props) {
     super(props);
