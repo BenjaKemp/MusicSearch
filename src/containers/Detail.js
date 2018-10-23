@@ -10,17 +10,16 @@ import {
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import ResponsivePlayer from "../components/ResponsivePlayer";
-import bigFilter from "../helpers/filters";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class Detail extends Component {
   render() {
     const index = Number(this.props.match.params.id);
-    const trackdetails = this.props.searchResult.map(el => {
+    const trackdetails = this.props.songsArray.map(el => {
       return el.trackId;
     });
     const thisTrackIndex = trackdetails.indexOf(index);
-    const songDetail = this.props.searchResult[thisTrackIndex];
+    const songDetail = this.props.songsArray[thisTrackIndex];
     const shareUrl = this.props.location.pathname;
     return (
       <div className="player" id="ap">
@@ -97,7 +96,7 @@ class Detail extends Component {
 }
 function mapStateToProps(state) {
   return {
-    searchResult: bigFilter(state)
+    songsArray: state.searchResult.results
   };
 }
 

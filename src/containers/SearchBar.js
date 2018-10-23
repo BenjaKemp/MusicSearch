@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {setSearchResults, sortBy} from '../actions'
+import {fetchSongs, sortBy} from '../actions'
 
 class SearchBar extends Component {
   constructor(props) {
@@ -17,13 +17,7 @@ onDescriptionChange = (e) => {
   onHandleSubmit = (e) => {
     e.preventDefault();
     let searchTerm = this.state.searched.replace(/ /g, '+');
-
-    fetch(`https://itunes.apple.com/search?term=${searchTerm}`)
-      .then(res => res.json())
-      .then(result => {
-        this.props.dispatch(setSearchResults(result));
-      })
-      .catch(e => console.log(e));
+    this.props.dispatch(fetchSongs(searchTerm));
   }
   handleClick = (e) => {
 let filterName = e.target.value;

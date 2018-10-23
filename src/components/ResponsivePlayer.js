@@ -3,20 +3,20 @@ import React, { Component } from "react";
 import ReactPlayer from 'react-player'
 
 
-class ResponsivePlayer extends Component {
-  render () {
+export const  ResponsivePlayer = (props) =>  {
+
     return (
       <div className='player-wrapper'>
         <ReactPlayer
           className='react-player'
-          url={this.props.url}
+          url={props.url}
           width='100%'
           height='50%'
           controls={true}
         />
       </div>
     )
-  }
+
 }
 
 

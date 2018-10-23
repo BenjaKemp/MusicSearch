@@ -1,4 +1,4 @@
-import { SET_SEARCH_RESULTS } from "../constants/action-types";
+import { SET_SEARCH_RESULTS, SORT_BY, FETCH_SONGS_SUCCESS } from "../constants/action-types";
 
 const initialState = {
   resultCount: 50,
@@ -2012,9 +2012,35 @@ const initialState = {
 };
 
 export default function(state = initialState, action) {
+
   switch (action.type) {
-    case SET_SEARCH_RESULTS:
-      return  action.results;
+    case FETCH_SONGS_SUCCESS:
+      return {
+        ...state,
+        results: action.payload.songs.results
+      };
+      case SORT_BY:
+      if(state.sortBy === action.sorter) {
+        return {
+          ...state,
+          results: [...state.results].reverse()
+        };
+      } else {
+        return {
+          ...state,
+          results: [...state.results].sort((a, b) => {
+            if (action.sorter === "length") {
+              return a.trackTimeMillis < b.trackTimeMillis ? 1 : -1;
+            }
+            if (action.sorter === "genre") {
+              return a.primaryGenreName < b.primaryGenreName ? 1 : -1;
+            } else if (action.sorter === "price") {
+              return a.trackPrice < b.trackPrice ? 1 : -1;
+            }
+          }),
+          sortBy: action.sorter
+        };
+      }
     default:
       return state;
   }
